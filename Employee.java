@@ -1,5 +1,3 @@
-package jenkins;
-
 public class Employee {
     String Empname;
     int Empid;
@@ -19,7 +17,6 @@ public static void main(String[] args) {
      Employee e=new Employee();
      e.calculateSalary();
 }
-
 }
 
 
