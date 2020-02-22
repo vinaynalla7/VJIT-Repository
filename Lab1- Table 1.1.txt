@@ -1,0 +1,34 @@
+Solution of Query-1:
+
+SQL> select staff_name as "name of the employee",Design_code as "Designation code" from Staff_Master where staff_sal between 12000 and 25000 and HireDate<'01-jan-2003';
+
+name of the employee                               Designation code
+-------------------------------------------------- ----------------
+vinay kumar                                                      10
+srinath_yadav                                                    11
+kishore                                                          12
+
+Solution of Query 2 :
+
+select Staff_code,Staff_Name,Dept_code from staff_master where (sysdate-HireDate)/365>18
+/
+
+Solution of Query 3 :
+
+select * from staff_Master where Mgr_code is Null
+/
+
+Solution of Query 4 :
+
+
+
+SQL> select * from book_master where book_pub_year between 2001 and 2004 and book_name like '%&%';
+
+no rows selected
+
+
+Solution of Query 5 :
+
+select staff_name from Staff_Master where Staff_Name like '%\_%'escape'\'
+/
+

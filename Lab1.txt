@@ -1,0 +1,64 @@
+Solution of Query-1:
+
+SQL> select staff_name as "name of the employee",Design_code as "Designation code" from Staff_Master where staff_sal between 12000 and 25000 and HireDate<'01-jan-2003';
+
+name of the employee                               Designation code
+-------------------------------------------------- ----------------
+vinay kumar                                                      10
+srinath_yadav                                                    11
+kishore                                                          12
+
+Solution of Query 2 :
+
+select Staff_code,Staff_Name,Dept_code from staff_master where (sysdate-HireDate)/365>18
+/
+
+Solution of Query 3 :
+
+select * from staff_Master where Mgr_code is Null
+/
+
+Solution of Query 4 :
+
+
+SQL> select * from Book_Master where Book_Pub_Year between 2001 and 2004;
+
+ BOOK_CODE BOOK_NAME                                          BOOK_PUB_YEAR
+---------- -------------------------------------------------- -------------
+BOOK_PUB_AUTHOR
+--------------------------------------------------
+         1 stature                                                     2001
+george
+
+         3 confident                                                   2003
+sagar
+
+
+
+SQL> select * from Book_Master where Book_Pub_Year >2001 and Book_Pub_Year <2004;
+
+ BOOK_CODE BOOK_NAME                                          BOOK_PUB_YEAR
+---------- -------------------------------------------------- -------------
+BOOK_PUB_AUTHOR
+--------------------------------------------------
+         3 confident                                                   2003
+sagar
+
+
+SQL> select * from Book_Master where Book_Pub_Year >=2001 and Book_Pub_Year <2004;
+
+ BOOK_CODE BOOK_NAME                                          BOOK_PUB_YEAR
+---------- -------------------------------------------------- -------------
+BOOK_PUB_AUTHOR
+--------------------------------------------------
+         1 stature                                                     2001
+george
+
+         3 confident                                                   2003
+sagar
+
+Solution of Query 5 :
+
+select staff_name from Staff_Master where Staff_Name like '%\_%'escape'\'
+/
+
