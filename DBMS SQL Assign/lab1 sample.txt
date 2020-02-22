@@ -1,0 +1,12 @@
+select staff_name as "name of the employee",Design_code as "Designation code" from Staff_Master where staff_sal between 12000 and 25000 and HireDate<'01-jan-2003'
+/
+3
+select * from staff_Master where Mgr_code is Null
+/
+4
+select * from Book_Master where Book_Pub_Year >=2001 and Book_Pub_Year <2004
+/
+
+SQL> select * from Book_Master where Book_Pub_Year between 2001 and 2004;
+
+

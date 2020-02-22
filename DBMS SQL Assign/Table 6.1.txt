@@ -1,0 +1,176 @@
+         Transaction control Language
+
+solution of query 1 :
+
+
+
+SQL> desc cust_table;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMERID                                         NUMBER(5)
+ CUSTOMERNAME                              NOT NULL VARCHAR2(30)
+ ADDRESS1                                           VARCHAR2(30)
+ ADDRESS2                                           VARCHAR2(30)
+ GENDER                                             VARCHAR2(1)
+ AGE                                                NUMBER(3)
+ PHONENO                                            NUMBER(10)
+ SAL                                                VARCHAR2(100)
+
+SQL> insert into cust_table values(&customerid,&customername,&address1,&address2,&gender,&age,&phoneno,&sal);
+Enter value for customerid: 6000
+Enter value for customername: 'john'
+Enter value for address1: '#115chicago'
+Enter value for address2: '#115chicago'
+Enter value for gender: 'm'
+Enter value for age: 25
+Enter value for phoneno: 7878776
+Enter value for sal: 10000
+old   1: insert into cust_table values(&customerid,&customername,&address1,&address2,&gender,&age,&phoneno,&sal)
+new   1: insert into cust_table values(6000,'john','#115chicago','#115chicago','m',25,7878776,10000)
+
+1 row created.
+
+SQL> insert into cust_table values(&customerid,&customername,&address1,&address2,&gender,&age,&phoneno,&sal);
+Enter value for customerid: 6001
+Enter value for customername: 'jack'
+Enter value for address1: '#116france'
+Enter value for address2: '#116france'
+Enter value for gender: 'm'
+Enter value for age: 25
+Enter value for phoneno: 434524
+Enter value for sal: 20000
+old   1: insert into cust_table values(&customerid,&customername,&address1,&address2,&gender,&age,&phoneno,&sal)
+new   1: insert into cust_table values(6001,'jack','#116france','#116france','m',25,434524,20000)
+
+1 row created.
+
+SQL> insert into cust_table values(&customerid,&customername,&address1,&address2,&gender,&age,&phoneno,&sal);
+Enter value for customerid: 6002
+Enter value for customername: 'james'
+Enter value for address1: '#114newyork'
+Enter value for address2: '#114newyork'
+Enter value for gender: 'm'
+Enter value for age: 45
+Enter value for phoneno: 431525
+Enter value for sal: 15000.50
+old   1: insert into cust_table values(&customerid,&customername,&address1,&address2,&gender,&age,&phoneno,&sal)
+new   1: insert into cust_table values(6002,'james','#114newyork','#114newyork','m',45,431525,15000.50)
+
+1 row created.
+
+SQL> select * from cust_table;
+
+CUSTOMERID CUSTOMERNAME                   ADDRESS1
+---------- ------------------------------ ------------------------------
+ADDRESS2                       G        AGE    PHONENO
+------------------------------ - ---------- ----------
+SAL
+--------------------------------------------------------------------------------
+      6000 john                           #115chicago
+#115chicago                    m         25    7878776
+10000
+
+      6001 jack                           #116france
+#116france                     m         25     434524
+20000
+
+CUSTOMERID CUSTOMERNAME                   ADDRESS1
+---------- ------------------------------ ------------------------------
+ADDRESS2                       G        AGE    PHONENO
+------------------------------ - ---------- ----------
+SAL
+--------------------------------------------------------------------------------
+
+      6002 james                          #114newyork
+#114newyork                    m         45     431525
+15000.5
+
+solution of query 2 :
+
+
+SQL> savepoint sp1;
+
+Savepoint created.
+
+solution of query 3 :
+
+
+
+SQL> insert into cust_table values(6003,'john','#114chicago','#114chicago','m',45,439525,19000.60);
+
+1 row created.
+
+SQL> select * from cust_table;
+
+CUSTOMERID CUSTOMERNAME                   ADDRESS1
+---------- ------------------------------ ------------------------------
+ADDRESS2                       G        AGE    PHONENO
+------------------------------ - ---------- ----------
+SAL
+--------------------------------------------------------------------------------
+      6000 john                           #115chicago
+#115chicago                    m         25    7878776
+10000
+
+      6001 jack                           #116france
+#116france                     m         25     434524
+20000
+
+CUSTOMERID CUSTOMERNAME                   ADDRESS1
+---------- ------------------------------ ------------------------------
+ADDRESS2                       G        AGE    PHONENO
+------------------------------ - ---------- ----------
+SAL
+--------------------------------------------------------------------------------
+
+      6002 james                          #114newyork
+#114newyork                    m         45     431525
+15000.5
+
+      6003 john                           #114chicago
+#114chicago                    m         45     439525
+
+CUSTOMERID CUSTOMERNAME                   ADDRESS1
+---------- ------------------------------ ------------------------------
+ADDRESS2                       G        AGE    PHONENO
+------------------------------ - ---------- ----------
+SAL
+--------------------------------------------------------------------------------
+19000.6
+
+solution of query 4 :
+
+
+SQL> rollback to savepoint sp1;
+
+Rollback complete.
+
+SQL> select * from cust_table;
+
+CUSTOMERID CUSTOMERNAME                   ADDRESS1
+---------- ------------------------------ ------------------------------
+ADDRESS2                       G        AGE    PHONENO
+------------------------------ - ---------- ----------
+SAL
+--------------------------------------------------------------------------------
+      6000 john                           #115chicago
+#115chicago                    m         25    7878776
+10000
+
+      6001 jack                           #116france
+#116france                     m         25     434524
+20000
+
+CUSTOMERID CUSTOMERNAME                   ADDRESS1
+---------- ------------------------------ ------------------------------
+ADDRESS2                       G        AGE    PHONENO
+------------------------------ - ---------- ----------
+SAL
+--------------------------------------------------------------------------------
+
+      6002 james                          #114newyork
+#114newyork                    m         45     431525
+15000.5
+
+
+

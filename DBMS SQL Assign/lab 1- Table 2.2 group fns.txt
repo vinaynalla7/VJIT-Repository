@@ -1,0 +1,33 @@
+ GROUP FUNCTIONS
+
+solution of Query 1 :
+
+SQL> select round(max(staff_sal)) as "maximum", round(min(staff_sal)) as "minimum", round(sum(staff_sal)) as "total", round(avg(staff_sal)) as "average" from staff_master group by dept_code;
+
+   maximum    minimum      total    average
+---------- ---------- ---------- ----------
+     23000      23000      23000      23000
+     24000      24000      24000      24000
+     26000      26000      26000      26000
+
+solution of query 2 :
+
+SQL> select dept_code, count(mgr_code) as "total number of managers" from staff_master group by dept_code;
+
+ DEPT_CODE total number of managers
+---------- ------------------------
+      1000                        1
+       100                        1
+       104                        1
+
+solution of query 3 :
+
+SQL> select deptno, sum(sal) from emp where job not in('manager') group by deptno  having sum(sal)> 20000 order by deptno;
+
+    DEPTNO   SUM(SAL)
+---------- ----------
+        10      25000
+        14      56000
+        18      56700
+        88      75000
+                56000
